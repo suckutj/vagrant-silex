@@ -9,16 +9,18 @@ $view->extend('layout.html.php')
 
 
 <div id="wrapper" class="container">
-    <div id="my_first_bootstrap_website" class="row">
+    <div class="row">
         <div class="col-12">
-            <h1>Home</h1>
-            </br>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit...
-            </br>
-            <button id="button_search" type="button" class="btn btn-default" aria-label="Left Align">
-                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-                Search
-            </button>
+            <div class="jumbotron">
+                <h1>Home</h1>
+                <br/>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit...
+                <br/>
+                <button id="button_search" type="button" class="btn btn-default" aria-label="Left Align">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    Search
+                </button>
+            </div>
         </div>
     </div>
     <div class="row">

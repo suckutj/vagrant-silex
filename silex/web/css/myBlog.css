@@ -1,0 +1,28 @@
+#wrapper {
+	margin-top: 30px;
+}
+
+#my_first_bootstrap_website {
+	padding: 20px;
+	background-color: #d4d4d4;
+}
+
+#article1, #article2 {
+	border: 1px solid #d4d4d4;
+}
+
+#blog_form {
+	background-color: rgba(0, 98, 131, 0.5);
+}
+
+#valid {
+	background-color: rgba(40, 199, 56, 0.1);
+}
+
+#form_in_valid {
+	margin: 4px;
+}
+
+#text {
+	resize: vertical;
+}
