@@ -7,18 +7,21 @@ $slots = $view['slots'];
 $view->extend('layout.html.php')
 ?>
 
-<div id="wrapper" class="container">
+<div class="container">
     <div class="row">
         <div class="col-12">
-            <div class="jumbotron" id="blog_form">
-                <form method="POST" action="/new">
+            <div class="jumbotron darkBlue">
+                <form method="POST" action="/newblogpost">
                     <div class="form-group">
-                        <p>Write a new blog</p>
+                        <p class="colorWhite">
+                            <strong id="blogHeader">Write a new blog</strong>
+                            <small><em>logged in as <?= $user ?></em></small>
+                        </p>
                         <input type="text" class="form-control" name="title" placeholder="Gib einen Titel ein"
                                value="<?= $title ?>">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" name="text" id="text" placeholder="Gib einen Text ein"
+                        <textarea class="form-control" name="text" id="formText" placeholder="Gib einen Text ein"
                                   rows="5"><?= $text ?></textarea>
                     </div>
                     <?php if ($error) : ?>
@@ -31,6 +34,6 @@ $view->extend('layout.html.php')
             </div>
         </div>
     </div>
-</div> <!--wrapper end-->
+</div>
 </body>
 </html>

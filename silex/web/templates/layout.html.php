@@ -47,26 +47,33 @@ $slots = $view['slots'];
         <div class="collapse navbar-collapse" id="navbar">
             <ul class="nav navbar-nav">
                 <li <?= $active == 'home' ? 'class="active"' : '' ?>>
-                    <a href="home">
+                    <a href="/home">
                         <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                         Home
                     </a>
                 </li>
                 <li <?= $active == 'blog' ? 'class="active"' : '' ?>>
-                    <a href="blog">
+                    <a href="/blog">
                         <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
                         Blog
                     </a>
                 </li>
                 <li <?= $active == 'newblogpost' ? 'class="active"' : '' ?>>
-                    <a href="newblogpost">
+                    <a href="/newblogpost">
                         <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         New Blog Post
+                    </a>
+                </li>
+                <li <?= $active == 'login' ? 'class="active"' : '' ?>>
+                    <a href="/login">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                        Login
                     </a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
 
 <?php $slots->output('_content') ?>

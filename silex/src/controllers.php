@@ -3,10 +3,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @var $app Silex\Application
+ *
+ * @var dbConnection Doctrine\DBAL\Connection
+ * @var template Symfony\Component\Templationg\DelegatingEngine
  */
 
-$app->get('/welcome/{name}', function ($name) use ($app) {
-    return $app['templating']->render(
+$dbConnection = $app['db'];
+$template = $app['templating'];
+
+$app->get('/welcome/{name}', function ($name) use ($template) {
+    return $template->render(
         'hello.html.php',
         array('name' => $name)
     );
@@ -19,53 +25,87 @@ $app->get('/welcome-twig/{name}', function ($name) use ($app) {
     );
 });
 
-$app->get('/home', function () use ($app) {
-    return $app['templating']->render(
+$app->get('/home', function () use ($template) {
+    return $template->render(
         'home.html.php',
         array('active' => 'home')
     );
 });
 
-$app->get('/blog', function () use ($app) {
-    return $app['templating']->render(
-        'blog.html.php',
-        array('active' => 'blog')
-    );
-});
+$app->get('/blog/{id}', function ($id) use ($template, $dbConnection) {
+    if ($id) {
+        $sql = "select * from blog_post where id=$id;";
+    } else {
+        $sql = "select * from blog_post;";
+    }
+    $content = $dbConnection->fetchAll($sql);
 
-$app->get('/newblogpost', function () use ($app) {
-    return $app['templating']->render(
-        'newBlogPost.html.php',
-        array(
-            'active' => 'newblogpost',
-            'error' => false,
-            'title' => '',
-            'text' => ''
-        )
-    );
-});
+    if ($id) {
+        return $template->render(
+            'blog.html.php',
+            array(
+                'active' => 'blog',
+                'content' => $content,
+                'single' => true
+            )
+        );
+    } else {
+        return $template->render(
+            'blog.html.php',
+            array(
+                'active' => 'blog',
+                'content' => $content,
+                'single' => false
+            )
+        );
+    }
+})->value('id', 0);
 
-$app->match('/new', function (Request $request) use ($app) {
-    $dbConnection = $app['db'];
+$app->match('/newblogpost', function (Request $request) use ($app, $template, $dbConnection) {
 
-    if ($request->isMethod('POST')) {
+    $user = $app['session']->get('user');
+
+    if ($request->isMethod('GET')) {
+        if ($user) {
+            return $template->render(
+                'newBlogPost.html.php',
+                array(
+                    'active' => 'newblogpost',
+                    'error' => false,
+                    'title' => '',
+                    'text' => '',
+                    'user' => $user['username']
+                )
+            );
+        } else {
+            return $template->render(
+                'login.html.php',
+                array(
+                    'active' => 'login'
+                )
+            );
+        }
+    } elseif ($request->isMethod('POST')) {
         $title = $request->get('title', '');
         $text = $request->get('text', '');
-        $createdAt = date('c');
+        $user = $app['session']->get('user');
 
-        if ($title and $text) {
+        $createdAt = date('c');     //get current date
+
+        if ($title and $text) {     //if title and text field are both filled
             //DB-insert
             $dbConnection->insert(
-                'blog_post',
+                'blog_post',        //table name: blog-post     columns: ID (auto), author, title, text, created_at
                 array(
                     'title' => $title,
+                    'author' => $user['username'],
                     'text' => $text,
                     'created_at' => $createdAt
                 )
             );
 
             //display webpage
-            return $app['templating']->render(
+            return $template->render(
                 'validPost.html.php',
                 array(
                     'active' => 'newblogpost',
@@ -73,16 +113,38 @@ $app->match('/new', function (Request $request) use ($app) {
                     'text' => $text
                 )
             );
-        } else {
-            return $app['templating']->render(
+        } else {                    //if title and text field are not both filled
+            return $template->render(
                 'newBlogPost.html.php',
                 array(
                     'active' => 'newblogpost',
                     'error' => true,
                     'title' => $title,
-                    'text' => $text
+                    'text' => $text,
+                    'user' => $user['username']
                 )
             );
         }
+    } else {
+        $app->abort(405);
+    }
+});
+
+$app->match('/login', function (Request $request) use ($app, $template, $dbConnection) {
+    if ($request->isMethod('GET')) {
+        return $template->render(
+            'login.html.php',
+            array(
+                'active' => 'login'
+            )
+        );
+    } else if ($request->isMethod('POST')) {
+        $username = $request->get('username', '');
+
+        $app['session']->set('user', array('username' => $username));
+
+        return $app->redirect('/newblogpost');
+    } else {
+        $app->abort(405);
     }
 });

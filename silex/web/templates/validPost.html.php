@@ -7,23 +7,28 @@ $slots = $view['slots'];
 $view->extend('layout.html.php')
 ?>
 
-<div id="wrapper" class="container">
+<div class="container">
     <div class="row">
         <div class="col-12">
-            <ul class="list-group" id="valid">
+            <ul class="list-group validGreen">
                 <li class="list-group-item list-group-item-success">
                     <h1>Thank you for your post!</h1>
                 </li>
-                <br/>
-                <div id="form_in_valid" class="form-group">
-                    <input type="text" class="form-control" name="title" value="<?= $title ?>">
-                </div>
-                <div id="form_in_valid" class="form-group">
-                    <textarea class="form-control" name="text" id="text" rows="5"><?= $text ?></textarea>
+                <div id="blog">
+                    <li class="list-group-item darkBlue colorWhite" id="titleBlog">
+                        <?= $title ?>
+                        <br/>
+                    </li>
+                    <li class="list-group-item lightBlue">
+                        <?= nl2br($text) ?>
+                    </li>
                 </div>
             </ul>
+            <form method="POST" action="/new/change">
+                <p><button type="submit" class="btn btn-default">Change</button></p>
+            </form>
         </div>
     </div>
-</div> <!--wrapper end-->
+</div>
 </body>
 </html>

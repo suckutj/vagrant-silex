@@ -1,28 +1,59 @@
-#wrapper {
-	margin-top: 30px;
+body {
+	background-image: url("../pictures/background.jpg");
+	background-attachment:fixed;
+	background-size: cover;
+
 }
 
-#my_first_bootstrap_website {
-	padding: 20px;
-	background-color: #d4d4d4;
+.colorWhite {
+	color: whitesmoke;
 }
 
-#article1, #article2 {
-	border: 1px solid #d4d4d4;
+.darkBlue {
+	background-color: rgba(79, 120, 163, 0.8);
 }
 
-#blog_form {
-	background-color: rgba(0, 98, 131, 0.5);
+.lightBlue {
+	background-color: rgba(188, 221, 255, 0.8);
 }
 
-#valid {
+.validGreen {
 	background-color: rgba(40, 199, 56, 0.1);
 }
 
-#form_in_valid {
-	margin: 4px;
+.validGreen #blog {
+	margin:4px;
 }
 
-#text {
+.validGreen #titleBlog {
+	font-size: 30px;
+}
+
+#formText {
 	resize: vertical;
+}
+
+#welcome {
+	position: fixed;
+	top: 35%;
+	margin: 0% 29%;
+	font-size: 20.0vh;
+}
+
+#login {
+	text-align: center;
+}
+
+#loginBtn {
+	width: 100px;
+	margin: 10px calc(50% - 50px);
+}
+
+#displayBlog a {
+	color: white;
+	font-size: 30px;
+}
+
+#blogHeader {
+	font-size: 40px;
 }
