@@ -9,8 +9,8 @@ $view->extend('layout.html.php');
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-            <div>
+        <div class="col-sm-6 col-sm-offset-3 col-xs-12">
+            <ul>
                 <li class="list-group-item darkBlue colorWhite">
                     <h2 id="login">Login</h2>
                 </li>
@@ -20,7 +20,6 @@ $view->extend('layout.html.php');
                         <button id="loginBtn" type="submit" class="btn btn-default">Login</button>
                     </form>
                 </li>
-            </div>
             </ul>
         </div>
     </div>

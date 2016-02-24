@@ -7,9 +7,9 @@ $slots = $view['slots'];
 $view->extend('layout.html.php');
 ?>
 
-<div class="container">
+<div id="wrapper" class="container">
     <div class="row">
-        <div class="col-12" id="displayBlog">
+        <div class="col-xs-12" id="displayBlog">
             <?php foreach ($content as $dataSet) { ?>
                 <ul class="list-group">
                     <li class="list-group-item darkBlue colorWhite">
@@ -23,10 +23,10 @@ $view->extend('layout.html.php');
                         </em>
                     </li>
                     <li class="list-group-item lightBlue">
-                        <?php echo $single == true ? nl2br($dataSet['text']) : substr($dataSet['text'], 0, 10) . "   (...)" ?>
+                        <?php echo $single == true ? nl2br($dataSet['text']) : substr($dataSet['text'], 0, 18) . "   (...)" ?>
                     </li>
                 </ul>
-            <?php } /*----end foreach----*/?>
+            <?php } /*----end foreach----*/ ?>
             <?php if ($single) : ?>
                 <form action="/blog">
                     <button type="submit" class="btn btn-default">back</button>

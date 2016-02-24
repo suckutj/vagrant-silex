@@ -7,7 +7,7 @@ $slots = $view['slots'];
 
 <!DOCTYPE html>
 
-<!-- all pages have a navigation bar -->
+<!-- all pages have a navigation bar and a footer -->
 
 <html>
 <head>
@@ -75,5 +75,16 @@ $slots = $view['slots'];
     </div>
 </nav>
 
+<footer>
+    <div class="navbar navbar-brand navbar-fixed-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    © Joas Suckut
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
 <?php $slots->output('_content') ?>

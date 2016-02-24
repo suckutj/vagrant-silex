@@ -1,59 +1,72 @@
 body {
-	background-image: url("../pictures/background.jpg");
-	background-attachment:fixed;
-	background-size: cover;
+    background-image: url("../pictures/background.jpg");
+    background-attachment: fixed;
+    background-size: cover;
 
 }
 
 .colorWhite {
-	color: whitesmoke;
+    color: whitesmoke;
 }
 
 .darkBlue {
-	background-color: rgba(79, 120, 163, 0.8);
+    background-color: rgba(79, 120, 163, 0.8);
 }
 
 .lightBlue {
-	background-color: rgba(188, 221, 255, 0.8);
+    background-color: rgba(188, 221, 255, 0.8);
 }
 
 .validGreen {
-	background-color: rgba(40, 199, 56, 0.1);
+    background-color: rgba(40, 199, 56, 0.1);
 }
 
 .validGreen #blog {
-	margin:4px;
+    margin: 4px;
 }
 
 .validGreen #titleBlog {
-	font-size: 30px;
+    font-size: 30px;
 }
 
 #formText {
-	resize: vertical;
+    resize: vertical;
 }
 
 #welcome {
-	position: fixed;
-	top: 35%;
-	margin: 0% 29%;
-	font-size: 20.0vh;
+    position: fixed;
+    top: 35%;
+    margin: 0% 29%;
+    font-size: 20.0vh;
 }
 
 #login {
-	text-align: center;
+    text-align: center;
 }
 
 #loginBtn {
-	width: 100px;
-	margin: 10px calc(50% - 50px);
+    width: 100px;
+    margin: 10px calc(50% - 50px);
 }
 
 #displayBlog a {
-	color: white;
-	font-size: 30px;
+    color: white;
+    font-size: 30px;
 }
 
 #blogHeader {
-	font-size: 40px;
+    font-size: 40px;
+}
+
+#validBtn {
+    width: 55px;
+}
+
+#wrapper {
+    margin-bottom: 100px;
+}
+
+footer .navbar {
+    background-color: rgba(255, 227, 187, 0.9);
+    text-align: center;
 }

@@ -33,14 +33,14 @@ $app->get('/home', function () use ($template) {
 });
 
 $app->get('/blog/{id}', function ($id) use ($template, $dbConnection) {
-    if ($id) {
+    if ($id >= 0) {
         $sql = "select * from blog_post where id=$id;";
     } else {
         $sql = "select * from blog_post;";
     }
     $content = $dbConnection->fetchAll($sql);
 
-    if ($id) {
+    if ($id >= 0) {
         return $template->render(
             'blog.html.php',
             array(
@@ -59,7 +59,7 @@ $app->get('/blog/{id}', function ($id) use ($template, $dbConnection) {
             )
         );
     }
-})->value('id', 0);
+})->value('id', -1);
 
 $app->match('/newblogpost', function (Request $request) use ($app, $template, $dbConnection) {
 
@@ -141,9 +141,13 @@ $app->match('/login', function (Request $request) use ($app, $template, $dbConne
     } else if ($request->isMethod('POST')) {
         $username = $request->get('username', '');
 
-        $app['session']->set('user', array('username' => $username));
+        if ($username && strlen(trim($username)) != 0) {
+            $app['session']->set('user', array('username' => $username));
 
-        return $app->redirect('/newblogpost');
+            return $app->redirect('/newblogpost');
+        } else {
+            return $app->redirect('/login');
+        }
     } else {
         $app->abort(405);
     }

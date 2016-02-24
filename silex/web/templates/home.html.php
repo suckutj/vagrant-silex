@@ -9,7 +9,7 @@ $view->extend('layout.html.php')
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-12">
+        <div class="col-xs-12">
             <p id="welcome">Welcome</p>
         </div>
     </div>
