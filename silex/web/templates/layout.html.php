@@ -9,6 +9,14 @@ $slots = $view['slots'];
 
 <!-- all pages have a navigation bar and a footer -->
 
+<!-- color information:
+        blog entries:   - title: darkBlue
+                        - text: lightBlue
+                        - font: smoky white
+        new Blog:       - same as blog entries
+        login:          - same as blog entries
+        valid post:     - validGreen -->
+
 <html>
 <head>
     <meta charset="utf-8"/>

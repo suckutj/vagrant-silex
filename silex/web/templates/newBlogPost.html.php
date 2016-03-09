@@ -7,7 +7,21 @@ $slots = $view['slots'];
 $view->extend('layout.html.php')
 ?>
 
-<div class="container">
+<!-- navbar & footer included with layout -->
+<!-- send a new blog post - title and text must be filled in - if not: warning message -->
+<!-- gets parameter:    $active (for navbar)
+                        $error (boxes are not all filled in)
+                        $title (title of the blog post
+                        $text (text of the blog post)
+                        $user (username from login) -->
+
+<!-- color information:
+        blog entries:   - title: darkBlue
+                        - text: lightBlue
+                        - font: smoky white
+        new Blog:       - same as blog entries -->
+
+<div class="container wrapper">
     <div class="row">
         <div class="col-xs-12">
             <div class="jumbotron darkBlue">

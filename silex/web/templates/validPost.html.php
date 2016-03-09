@@ -7,7 +7,19 @@ $slots = $view['slots'];
 $view->extend('layout.html.php')
 ?>
 
-<div class="container">
+<!-- navbar & footer included with layout -->
+<!-- displays written and sent blog post -->
+<!-- gets parameter:    $active (for navbar - still new Blog Post)
+                        $title (title of the written blog post
+                        $text (text of the written blog post) -->
+
+<!-- color information:
+        blog entries:   - title: darkBlue
+                        - text: lightBlue
+                        - font: smoky white
+        valid post:     - validGreen -->
+
+<div class="container wrapper">
     <div class="row">
         <div class="col-xs-12">
             <ul class="list-group validGreen">

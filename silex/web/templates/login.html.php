@@ -7,7 +7,18 @@ $slots = $view['slots'];
 $view->extend('layout.html.php');
 ?>
 
-<div class="container">
+<!-- navbar & footer included with layout -->
+<!-- before posting users have to be logged in (only their username is required)
+        starts a session (remembers username) -->
+<!-- gets parameter:    $active (for navbar) -->
+
+<!-- color information:
+        blog entries:   - title: darkBlue
+                        - text: lightBlue
+                        - font: smoky white
+        login:          - same as blog entries -->
+
+<div class="container wrapper">
     <div class="row">
         <div class="col-sm-6 col-sm-offset-3 col-xs-12">
             <ul>

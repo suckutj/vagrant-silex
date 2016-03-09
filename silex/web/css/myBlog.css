@@ -5,6 +5,10 @@ body {
 
 }
 
+.wrapper {
+    margin-bottom: 100px;
+}
+
 .colorWhite {
     color: whitesmoke;
 }
@@ -60,10 +64,6 @@ body {
 
 #validBtn {
     width: 55px;
-}
-
-#wrapper {
-    margin-bottom: 100px;
 }
 
 footer .navbar {

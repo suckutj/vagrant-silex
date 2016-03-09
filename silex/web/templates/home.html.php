@@ -7,6 +7,10 @@ $slots = $view['slots'];
 $view->extend('layout.html.php')
 ?>
 
+<!-- navbar & footer included with layout -->
+<!-- just a simple welcome page :) -->
+<!-- gets parameter:    $active (for navbar) -->
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-xs-12">

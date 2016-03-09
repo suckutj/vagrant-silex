@@ -7,7 +7,18 @@ $slots = $view['slots'];
 $view->extend('layout.html.php');
 ?>
 
-<div id="wrapper" class="container">
+<!-- navbar & footer included with layout -->
+<!-- display all blog entry or only one (depends on $single) -->
+<!-- gets parameter:    $active (for navbar)
+                        $content (from database)
+                        $single -->
+
+<!-- color information:
+        blog entries:   - title: darkBlue
+                        - text: lightBlue
+                        - font: smoky white -->
+
+<div class="container wrapper">
     <div class="row">
         <div class="col-xs-12" id="displayBlog">
             <?php foreach ($content as $dataSet) { ?>
